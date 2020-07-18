@@ -15,3 +15,9 @@ struct Design_COdeApp: App {
         }
     }
 }
+
+struct Design_COdeApp_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

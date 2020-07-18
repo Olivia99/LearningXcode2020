@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct CourseView: View {
-    var body: some View {
-        List(0 ..< 5) { item in
-            CourseRow()
-        }
-        
+    var body: some View{
+        Text("")
     }
 }
 
