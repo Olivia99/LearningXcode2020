@@ -12,21 +12,29 @@ struct CourseView: View {
     @Namespace var namespace
     @State var selectedItem: Course? = nil
     @State var isDisable = false
+    
+    
     var body: some View{
         ZStack {
             ScrollView {
-                VStack(spacing:20) {
+                LazyVGrid(
+                    columns: [
+                        GridItem(.adaptive(minimum: 160), spacing:16)
+                    ], spacing: 16
+                    
+                    
+                ){
                     ForEach(courses) { item in
                         CourseItem(course: item)
                             .matchedGeometryEffect(id: item.id, in: namespace, isSource: !show)
-                            .frame(width: 335, height: 250)
+                            .frame( height: 250)
                             .onTapGesture {
                                 withAnimation(.spring()){
                                     show.toggle()
                                     selectedItem = item
                                     isDisable = true
                                 }
-                           
+                                
                                 
                             }
                             .disabled(isDisable)
@@ -34,6 +42,7 @@ struct CourseView: View {
                     }
                     
                 }
+                .padding(16)
                 .frame(maxWidth: .infinity)
             }
             
@@ -49,7 +58,7 @@ struct CourseView: View {
                                 DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
                                     isDisable = false
                                 }
-                              
+                                
                             }
                             
                         }
