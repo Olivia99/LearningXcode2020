@@ -34,7 +34,7 @@ struct Sidebar: View {
             #endif
             
             
-            CourseView()
+            CourseList()
         }
         
     }
