@@ -21,8 +21,6 @@ struct CourseView: View {
                     columns: [
                         GridItem(.adaptive(minimum: 160), spacing:16)
                     ], spacing: 16
-                    
-                    
                 ){
                     ForEach(courses) { item in
                         VStack {
@@ -35,8 +33,7 @@ struct CourseView: View {
                                         selectedItem = item
                                         isDisable = true
                                     }
-                                    
-                                    
+                               
                                 }
                                 .disabled(isDisable)
                         }
@@ -52,29 +49,10 @@ struct CourseView: View {
             if selectedItem != nil {
                 ZStack(alignment: .topTrailing)
                 {
-                    
-                    VStack {
-                        ScrollView {
-                            CourseItem(course: selectedItem!)
-                                .matchedGeometryEffect(id: selectedItem!.id, in: namespace)
-                                .frame(height:300)
-                            
-                            
-                            VStack {
-                                ForEach(0 ..< 20) { item in
-                                    CourseRow()
-                                }
-                            }
-                            .padding()
-                            
-                        }
-                        
-                    }
-                    .background(Color("Background 1"))
-                    .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-                    .matchedGeometryEffect(id: "container\(selectedItem!.id)", in: namespace)
-                    
-                    .edgesIgnoringSafeArea(.all)
+                    /*
+                     passing "course" and "namespace" value to CourseDetails
+                     */
+                    CourseDetails(course: selectedItem!, namespace: namespace)
                     
                     
                     CloseButton()
